@@ -42,6 +42,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.android.support:recyclerview-v7:21.0.0'
     compile 'de.greenrobot:eventbus:2.2.1'
+    compile 'com.facebook.fresco:fresco:0.6.0+'
 
     apt "org.androidannotations:androidannotations:3.2"
     compile 'org.androidannotations:androidannotations-api:3.2'

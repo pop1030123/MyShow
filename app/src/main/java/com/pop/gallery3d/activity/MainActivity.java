@@ -21,12 +21,13 @@ public class MainActivity extends Activity {
 
     public static final int COLUMN = 4;
     public static Uri uri = MediaStore.Images.Thumbnails.EXTERNAL_CONTENT_URI ;
+//    public static Uri uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI ;
     private String[] projection = {
-            MediaStore.Images.Thumbnails._ID,
-            MediaStore.Images.Thumbnails.DATA
+        MediaStore.Images.Thumbnails._ID,
+        MediaStore.Images.Thumbnails.DATA
     } ;
-    private String selection = "" ;
-    private String[] selectionArgs = {} ;
+    private String selection = MediaStore.Images.Thumbnails.DATA+"!=?" ;
+    private String[] selectionArgs = {""} ;
     private String order = "" ;
 
     @ViewById(R.id.list)
@@ -37,7 +38,6 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @AfterViews

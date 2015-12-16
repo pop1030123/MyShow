@@ -3,6 +3,8 @@ package com.pop.gallery3d;
 import android.app.Application;
 import android.util.DisplayMetrics;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+
 import org.androidannotations.annotations.EApplication;
 
 /**
@@ -35,5 +37,7 @@ public class App extends Application {
         SCREEN_WIDTH = dm.widthPixels;
         SCREEN_HEIGHT = dm.heightPixels;
         SCREEN_DENSITY = dm.density;
+
+        Fresco.initialize(this);
     }
 }
