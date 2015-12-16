@@ -16,15 +16,22 @@ import com.pop.gallery3d.App;
 import com.pop.gallery3d.activity.MainActivity;
 import com.pop.gallery3d.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by pengfu on 15/12/13.
  */
-public class ImageAdapter extends BaseAbstractRecycleCursorAdapter<ImageAdapter.ViewHolder> {
+public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> {
 
     private Context mContext ;
-    public ImageAdapter(Context context ,Cursor cursor){
-        super(context ,cursor);
+    private List<String> imagesPath = new ArrayList<>();
+    public ImageAdapter(Context context){
         mContext = context ;
+    }
+
+    public void setImagesPath(List<String> paths){
+        imagesPath = paths ;
     }
 
     @Override
@@ -33,8 +40,13 @@ public class ImageAdapter extends BaseAbstractRecycleCursorAdapter<ImageAdapter.
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, Cursor cursor) {
-        holder.imageView.setImageURI(ContentUris.withAppendedId(MainActivity.uri, cursor.getLong(0)));
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        holder.imageView.setImageURI(Uri.parse("file://"+imagesPath.get(position)));
+    }
+
+    @Override
+    public int getItemCount() {
+        return imagesPath.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
